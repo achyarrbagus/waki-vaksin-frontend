@@ -103,7 +103,8 @@ export default function Dashboard() {
           {articles ? <SliderUpdatedArticle data={articles} /> : <Skeleton count={8} />}
         </div>
       </div >
-      <div className="bg-white flex flex-col p-6">
+
+      <div className="bg-white flex flex-col px-6 pt-6">
         <p className="text-secondary-500 font-bold text-lg mb-3">{t("text-h-1")}</p>
         <p className="font-bold text-3xl">{t("text-h-2")}</p>
         <p className="text-lg">{t("text-h-3")}</p>
@@ -191,50 +192,52 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-        <div className="ml-12">
+
+      <div className="bg-white">
+        <div className="ml-12 relative top-[75px]">
           <Image
             src={'/images/icons/virus.png'}
             alt={'jenis'}
-            height="150"
-            width="150"
-            layout="responsive"
+            height="170"
+            width="170"
           />
         </div>
-      <div className="flex flex-col bg-secondary-100 mx-6 rounded-lg">
-        <div className="flex flex-col">
-          <div className="mx-6 mt-20">
-            <p className="text-2xl text-secondary-500">{t('jadwal-vaksin')}</p>
-          </div>
-          <div className="mx-6 mt-5">
-            <p className="text-3xl text-gray">{t('cek-jadwal')}</p>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-wrap">
-            <Image
-              src={'/images/icons/blok.png'}
-              alt={'jenis'}
-              height="300"
-              width="420"
-            />
-          </div>
-          <Link href="/">
-          <a className="h-full flex-1 text-center">
-            <div className="bg-secondary-500 rounded-full shadow-lg px-4 py-3 mx-6 mb-5">
-              <p className="text-white font-bold text-lg">{t("cek-sekarang")}</p>
+        <div className="flex flex-col bg-secondary-100 mx-6 rounded-lg">
+          <div className="flex flex-col">
+            <div className="mx-6 mt-16">
+              <p className="text-2xl text-secondary-500">{t('jadwal-vaksin')}</p>
             </div>
-          </a>
-          </Link>
-          <div className="mx-auto">
-            <Image
-              src={'/images/icons/bidan.png'}
-              alt={'jenis'}
-              height="475"
-              width="290"
-            />
+            <div className="mx-6 mt-5">
+              <p className="text-3xl text-gray">{t('cek-jadwal')}</p>
+            </div>
           </div>
-        </div>
-      </div>      
+          <div className="flex flex-col">
+            <div className="flex flex-wrap">
+              <Image
+                src={'/images/icons/blok.png'}
+                alt={'jenis'}
+                height="300"
+                width="420"
+              />
+            </div>
+            <Link href="/">
+            <a className="h-full flex-1 text-center">
+              <div className="bg-secondary-500 rounded-full shadow-lg px-4 py-3 mx-6 mb-5">
+                <p className="text-white font-bold text-lg">{t("cek-sekarang")}</p>
+              </div>
+            </a>
+            </Link>
+            <div className="mx-auto">
+              <Image
+                src={'/images/icons/bidan.png'}
+                alt={'jenis'}
+                height="475"
+                width="290"
+              />
+            </div>
+          </div>
+        </div>      
+      </div>
       <Footer />
     </Layout >
   )
