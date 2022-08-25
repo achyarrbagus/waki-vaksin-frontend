@@ -3,7 +3,6 @@ import { AiOutlineLeft } from "react-icons/ai"
 import Link from "next/link"
 import React, { useState } from "react";
 import FlagComp from '@/components/shared/Flag'
-import ChatLeave from '@/components/ChatLeave'
 import { switchName } from '/helpers/index'
 import { useTranslation } from 'next-i18next';
 

@@ -26,6 +26,7 @@
     "next": "^12.1.0",
     "next-i18next": "^10.5.0",
     "react": "17.0.2",
+    "react-chatbot-kit": "^2.1.0",
     "react-dom": "17.0.2",
     "react-google-map-picker": "^1.2.3",
     "react-gtm-module": "^2.0.11",
@@ -37,7 +38,7 @@
     "sass": "^1.45.2",
     "sendbird": "^3.1.7",
     "sendbird-uikit": "^2.7.1",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.2.0",
     "swiper": "^7.4.1",
     "yup": "^0.32.11"
   },

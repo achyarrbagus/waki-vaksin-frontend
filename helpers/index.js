@@ -9,22 +9,22 @@ export function switchName(param) {
             value = 'Cepat Sehat'
             break
         case 'ph':
-            value = 'Pagalingkaagad'
+            value = 'Cepat Sehat'
             break
         case 'vn':
-            value = 'Surat Sakit'
+            value = 'Cepat Sehat'
             break
         case 'th':
-            value = 'Surat Sakit'
+            value = 'Cepat Sehat'
             break
         case 'kh':
-            value = 'Surat Sakit'
+            value = 'Cepat Sehat'
             break
         case 'pk':
-            value = 'Sickleave'
+            value = 'Cepat Sehat'
             break
         default:
-            value = 'Surat Sakit'
+            value = 'Cepat Sehat'
             break
     }
 

@@ -20,7 +20,7 @@ function Layout({ title, back, keywords, description, children, headerAction }) 
             <div className="flex flex-col min-h-screen overflow-hidden">
                 <Header headerTitle={title} headerBack={back} headerAction={headerAction} />
                 <main className="w-full min-h-full absolute top-0 left-0 z-0 pt-14">
-                    <div className="container mx-auto max-w-layout h-screen">
+                    <div className="container mx-auto max-w-layout h-screen bg-white">
                         {children}
                     </div>
                 </main>
