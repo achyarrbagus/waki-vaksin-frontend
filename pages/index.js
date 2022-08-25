@@ -1,11 +1,10 @@
 import Link from "next/link"
-import Layout from "../components/Layout"
-import Footer from "../components/Footer"
+import Layout from "@/components/Layout"
+import Footer from "@/components/Footer"
 import Image from "next/image"
 import { useEffect, useState } from 'react'
 import { AiOutlineArrowRight } from "react-icons/ai"
-import SliderUpdatedArticle from "../components/mobiles/SliderUpdatedArticle"
-import ListDoctor from "../components/mobiles/ListDoctor"
+import SliderUpdatedArticle from "@/components/mobiles/SliderUpdatedArticle"
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Skeleton from 'react-loading-skeleton'
@@ -85,7 +84,7 @@ export default function Dashboard() {
           <p className="text-lg sm:text-md font-normal mt-3">{t("header-3")}</p>
         </div>
         {/* header menu */}
-        <Link href="/">
+        <Link href="/chat">
           <a className="h-full flex-1 text-center">
             <div className="bg-secondary-500 rounded-full shadow-lg px-4 py-3 mx-6 mb-5 mt-5">
               <p className="text-white font-bold text-lg">{t("btn-header-1")}</p>
@@ -165,7 +164,7 @@ export default function Dashboard() {
                   />
                 </div>
                 <div className="item-center">
-                  <p className="text-3xl font-bold py-4 px-6">Hepatitis B</p>
+                  <p className="text-3xl font-bold py-4 px-6">Vaksin Polio</p>
                 </div>
             </div>
             <div>
@@ -183,7 +182,7 @@ export default function Dashboard() {
                   />
                 </div>
                 <div className="item-center">
-                  <p className="text-3xl font-bold py-4 px-6">Hepatitis B</p>
+                  <p className="text-3xl font-bold py-4 px-6">Vaskin BCG</p>
                 </div>
             </div>
             <div>
@@ -221,13 +220,13 @@ export default function Dashboard() {
               />
             </div>
             <Link href="/">
-            <a className="h-full flex-1 text-center">
+            <a className="h-full flex-1 text-center -top-6">
               <div className="bg-secondary-500 rounded-full shadow-lg px-4 py-3 mx-6 mb-5">
                 <p className="text-white font-bold text-lg">{t("cek-sekarang")}</p>
               </div>
             </a>
             </Link>
-            <div className="mx-auto">
+            <div className="mx-auto pl-6">
               <Image
                 src={'/images/icons/bidan.png'}
                 alt={'jenis'}
