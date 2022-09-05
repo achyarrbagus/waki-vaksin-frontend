@@ -43,7 +43,7 @@ const config = {
   widgets: [
     {
       widgetName: "NamaOrtu",
-      widgetFunc: (props) => <SelectOption {...props} />,
+      widgetFunc: (props) => <NamaOrtu {...props} />,
       mapStateToProps: ["messages"],
     },
   ],
