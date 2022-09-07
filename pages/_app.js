@@ -36,6 +36,39 @@ function MyApp({ Component, pageProps }) {
         }
 
     })
+    const customTheme = {
+      tabsHeader: {
+        styles: {
+          base: {
+            width: "w-full",
+            border: "border-none",
+            radius: "rounded-none",
+            background: "bg-white",
+          },
+        },
+      },
+      tab: {
+        styles: {
+          base: {
+            tab: {
+              initial: {
+                display: "grid",
+                placeItems: "place-items-center",
+                color: "text-secondary-500",
+                font: "font-bold",
+                border: "border-b-2 border-secondary-500",
+              },
+              disabled: {
+                color: "text-secondary-500",
+                font: "font-bold",
+                border: "border-b-2 border-secondary-500",
+                background: "bg-secondary-500",
+              },
+            },
+          },
+        },
+      },
+    };
 
     const [qf, setqf] = useState('')
     const [qr, setqr] = useState('')
@@ -48,7 +81,7 @@ function MyApp({ Component, pageProps }) {
     const [gender, setGender] = useState('')
     const [days, setDays] = useState('')
     return (
-        <ThemeProvider>
+        <ThemeProvider value={customTheme}>
             <AppContext.Provider value={{
                 state: {
                     qf: qf,
