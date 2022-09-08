@@ -157,38 +157,36 @@ export default function Pofile() {
                 <div className="flex flex-row">
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-secondary-500 rounded-full px-4 py-3 m-2">
-                        <p className="text-white text-lg">
-                          Belum
-                        </p>
+                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                        <p className="text-lg font-bold">Belum</p>
                       </div>
                     </a>
                   </Link>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-secondary-500 rounded-full px-4 py-3 m-2">
-                        <p className="text-white text-lg">
-                         Sudah
-                        </p>
+                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                        <p className="text-lg font-bold">Sudah</p>
                       </div>
                     </a>
                   </Link>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-secondary-500 rounded-full px-4 py-3 m-2">
-                        <p className="text-white text-lg">
-                          Semua
-                        </p>
+                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                        <p className="text-lg font-bold">Semua</p>
                       </div>
                     </a>
                   </Link>
                 </div>
                 <div className="flex flex-col">
-                    <p className="text-2xl font-bold">Riwayat Vaksin Anak</p>
+                  <p className="text-2xl font-bold">Riwayat Vaksin Anak</p>
                 </div>
               </div>
             </TabPanel>
-            <TabPanel key={2} value={2}></TabPanel>
+            <TabPanel key={2} value={2}>
+              <div className="flex flex-col">
+                <p className="text-2xl font-bold">Tabel Tumbuh Kembang Anak</p>
+              </div>
+            </TabPanel>
           </TabsBody>
         </Tabs>
       </div>

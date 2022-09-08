@@ -48,6 +48,44 @@ class ActionProvider {
       messages: [...prevstate.messages, message],
     }));
   };
+
+  /*  const message = this.createClientMessage("#Ayah :");
+   this.addMessageToState(message); */
+  handleAyah = () => {
+    var els = document.querySelector(
+      'input[class="react-chatbot-kit-chat-input"]'
+    );
+    els.focus();
+    els.value = "ayah: ";
+  };
+
+  handleBunda = () => {
+    var els = document.querySelector(
+      'input[class="react-chatbot-kit-chat-input"]'
+    );
+    els.focus();
+    els.value = "bunda: ";
+  };
+
+  handleVaksinStatus = (props) => {
+    const message = this.createChatBotMessage(
+      `Apakah ${props} sudah pernah cek status vaksin anak Anda di Cepat Sehat?`,
+      {
+        widget: "StatusVaksin",
+      }
+    );
+    this.addMessageToState(message);
+  };
+
+  handleSudahVaksin = () => {
+    const message = this.createClientMessage("Sudah");
+    this.addMessageToState(message);
+  };
+
+  handleBelumVaksin = () => {
+    const message = this.createClientMessage("Belum");
+    this.addMessageToState(message);
+  };
 }
 
 export default ActionProvider;

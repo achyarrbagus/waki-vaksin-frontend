@@ -2,6 +2,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import Header from "@/components/chatbot/widget/Header";
 import Botavatar from "@/components/chatbot/widget/Botavatar";
 import NamaOrtu from "@/components/chatbot/widget/NamaOrtu";
+import StatusVaksin from "@/components/chatbot/widget/StatusVaksin";
 import SelectOption from "@/components/chatbot/widget/SelectOption";
 // import Contact from "./widgets/Contact";
 // import MedicineDelivery from "./widgets/MedicineDelivery";
@@ -39,12 +40,16 @@ const config = {
     header: () => <Header />,
     botAvatar: (props) => <Botavatar {...props} />,
   },
-  // state: {},
+  state: {},
   widgets: [
     {
       widgetName: "NamaOrtu",
       widgetFunc: (props) => <NamaOrtu {...props} />,
       mapStateToProps: ["messages"],
+    },
+    {
+      widgetName: "StatusVaksin",
+      widgetFunc: (props) => <StatusVaksin {...props} />,
     },
   ],
 

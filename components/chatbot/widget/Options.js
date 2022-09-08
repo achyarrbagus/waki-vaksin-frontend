@@ -6,7 +6,7 @@ const Options = (props) => {
         {props.options.map((option) => {
           return (
             <div
-              className="option-item"
+              className="option-item font-bold"
               onClick={option.handler}
               key={option.id}
             >
