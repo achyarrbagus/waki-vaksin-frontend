@@ -1,4 +1,6 @@
 import Options from "@/components/chatbot/widget/Options";
+import { useState, useContext } from "react";
+import AppContext from "@/components/AppContext";
 
 const StatusVaksin = (props) => {
   const options = [
@@ -13,7 +15,12 @@ const StatusVaksin = (props) => {
       id: 2,
     },
   ];
-  return <Options options={options} title="" />;
+
+  return (
+    <>
+      <Options options={options} title="" />
+    </>
+  );
 };
 
 export default StatusVaksin;

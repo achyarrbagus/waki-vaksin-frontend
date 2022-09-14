@@ -70,41 +70,25 @@ function MyApp({ Component, pageProps }) {
       },
     };
 
-    const [qf, setqf] = useState('')
-    const [qr, setqr] = useState('')
-    const [data_diri, setdata_diri] = useState('')
+
+    const [NamaOrtu, setNamaOrtu] = useState('/surat')
     const [addr, setAddr] = useState('')
     const [slugs, setSlugs] = useState('')
-    const [urls, seturls] = useState('/surat')
     const [email, setEmail] = useState('')
-    const [work, setWork] = useState('')
-    const [gender, setGender] = useState('')
-    const [days, setDays] = useState('')
+
     return (
         <ThemeProvider value={customTheme}>
             <AppContext.Provider value={{
                 state: {
-                    qf: qf,
-                    qr: qr,
-                    urls: urls,
+                    NamaOrtu: NamaOrtu,
                     addr: addr,
                     slugs: slugs,
-                    data_diri: data_diri,
                     email: email,
-                    work: work,
-                    gender: gender,
-                    days: days
                 },
-                setqf: setqf,
-                setqr: setqr,
-                seturls: seturls,
+                setNamaOrtu: setNamaOrtu,
                 setAddr: setAddr,
                 setSlugs: setSlugs,
-                setdata_diri: setdata_diri,
                 setEmail: setEmail,
-                setWork: setWork,
-                setGender: setGender,
-                setDays: setDays,
             }}>
                 <Component {...pageProps} />
             </AppContext.Provider >

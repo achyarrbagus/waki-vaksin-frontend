@@ -9,9 +9,7 @@ class MessageParser {
     const lowercase = message.toLowerCase();
     if (lowercase.includes("hello") || lowercase.includes("hi")) {
       this.actionProvider.messageHandler();
-    } else if (lowercase.includes("bunda:")) {
-      this.actionProvider.handleVaksinStatus(message);
-    } else if (lowercase.includes("ayah:")) {
+    } else if (lowercase.includes("bunda:") || lowercase.includes("ayah:")) {
       this.actionProvider.handleVaksinStatus(message);
     } else {
       this.actionProvider.handleUnknown();

@@ -1,3 +1,6 @@
+import { useState, useContext } from "react";
+import AppContext from "@/components/AppContext";
+
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, createClientMessage) {
     this.createChatBotMessage = createChatBotMessage;
@@ -77,14 +80,68 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
-  handleSudahVaksin = () => {
+  handleSudahVaksin = (props) => {
     const message = this.createClientMessage("Sudah");
+    this.addMessageToState(message);
+    const message2 = this.createChatBotMessage(
+      `Silahkan masukkan nomor handphone Bunda ${props} yang telah terdaftar.`,
+      {
+        widget: "No_hp",
+      },
+      {
+        delay: 400,
+      }
+    );
+    this.addMessageToState(message2);
+  };
+
+  handleBelumVaksin = (props) => {
+    const message = this.createClientMessage("Belum");
+    this.addMessageToState(message);
+    const message2 = this.createChatBotMessage(
+      `Baik, Vaksini membutuhkan data diri anak  ${props}. Silahkan masukkan data anak  ${props}:`,
+      {
+        widget: "Data_anak",
+      },
+      {
+        delay: 400,
+      }
+    );
+    this.addMessageToState(message2);
+  };
+
+  handleInputNamaAnak = () => {
+    var els = document.querySelector(
+      'input[class="react-chatbot-kit-chat-input"]'
+    );
+    els.focus();
+    els.value = "Nama: ";
+  };
+
+  handleInputTglLahir = () => {
+    var els = document.querySelector(
+      'input[class="react-chatbot-kit-chat-input"]'
+    );
+    els.focus();
+    els.setAttribute("type", "date");
+  };
+
+  handleInputJkL = () => {
+    const message = this.createClientMessage(`Laki-Laki`);
     this.addMessageToState(message);
   };
 
-  handleBelumVaksin = () => {
-    const message = this.createClientMessage("Belum");
+  handleInputJkP = () => {
+    const message = this.createClientMessage(`Perempuan`);
     this.addMessageToState(message);
+  };
+
+  handleInputNoHP = () => {
+    var els = document.querySelector(
+      'input[class="react-chatbot-kit-chat-input"]'
+    );
+    els.focus();
+    els.setAttribute("type", "number");
   };
 }
 

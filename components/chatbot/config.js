@@ -3,7 +3,8 @@ import Header from "@/components/chatbot/widget/Header";
 import Botavatar from "@/components/chatbot/widget/Botavatar";
 import NamaOrtu from "@/components/chatbot/widget/NamaOrtu";
 import StatusVaksin from "@/components/chatbot/widget/StatusVaksin";
-import SelectOption from "@/components/chatbot/widget/SelectOption";
+import Data_anak from "@/components/chatbot/widget/Data_anak";
+import No_hp from "@/components/chatbot/widget/No_hp";
 // import Contact from "./widgets/Contact";
 // import MedicineDelivery from "./widgets/MedicineDelivery";
 // import CoBotAvatar from "./CoBotAvatar";
@@ -45,11 +46,19 @@ const config = {
     {
       widgetName: "NamaOrtu",
       widgetFunc: (props) => <NamaOrtu {...props} />,
-      mapStateToProps: ["messages"],
     },
     {
       widgetName: "StatusVaksin",
       widgetFunc: (props) => <StatusVaksin {...props} />,
+      mapStateToProps: ["name"],
+    },
+    {
+      widgetName: "Data_anak",
+      widgetFunc: (props) => <Data_anak {...props} />,
+    },
+    {
+      widgetName: "No_hp",
+      widgetFunc: (props) => <No_hp {...props} />,
     },
   ],
 
