@@ -11,6 +11,8 @@ class MessageParser {
       this.actionProvider.messageHandler();
     } else if (lowercase.includes("bunda:") || lowercase.includes("ayah:")) {
       this.actionProvider.handleVaksinStatus(message);
+    } else if (lowercase.includes("+62")) {
+      this.actionProvider.handleViewProfile(message);
     } else {
       this.actionProvider.handleUnknown();
     }
