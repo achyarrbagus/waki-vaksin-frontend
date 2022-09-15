@@ -9,14 +9,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Skeleton from "react-loading-skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
-import { Table } from "antd";
+import { Table, Tabs } from "antd";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -181,91 +174,85 @@ export default function Pofile() {
         </div>
       </div>
 
-      <div className="mt-4">
-        <Tabs value="1">
-          <TabsHeader>
-            <Tab key={1} value={1}>
-              Vaksin
-            </Tab>
-            <Tab key={2} value={2}>
-              Pertumbuhan
-            </Tab>
-          </TabsHeader>
-          <TabsBody>
-            <TabPanel key={1} value={1}>
-              <div className="flex flex-col">
-                <div className="flex flex-row">
-                  <Link href="#">
-                    <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                        <p className="text-lg font-bold">Belum</p>
-                      </div>
-                    </a>
-                  </Link>
-                  <Link href="#">
-                    <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                        <p className="text-lg font-bold">Sudah</p>
-                      </div>
-                    </a>
-                  </Link>
-                  <Link href="#">
-                    <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                        <p className="text-lg font-bold">Semua</p>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-2xl font-bold mb-2">Riwayat Vaksin Anak</p>
-                  <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2 bg-theme ">
-                    <div className="mx-4 my-2 font-bold">0 Bulan</div>
-                    <div className="flex flex-col mx-4">
-                      <div className="px-6 my-2 text-secondary-500 font-bold">
-                        Hepatitis B1
-                      </div>
-                      <div className="px-6 my-2 text-secondary-500 font-bold">
-                        Polio
-                      </div>
+      <div className="mt-4 mx-6">
+        <Tabs
+          defaultActiveKey="1"
+          size={"large"}
+          tabBarStyle={{ width: "100%", color: "#A7A7A7" }}
+        >
+          <Tabs.TabPane tab="Vaksin" key="1">
+            <div className="flex flex-col">
+              <div className="flex flex-row">
+                <Link href="#">
+                  <a className="h-full text-center -top-6">
+                    <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <p className="text-lg font-bold">Belum</p>
                     </div>
-                    <div className="flex flex-col mx-4">
-                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
-                        Belum
-                      </div>
-                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
-                        Belum
-                      </div>
+                  </a>
+                </Link>
+                <Link href="#">
+                  <a className="h-full text-center -top-6">
+                    <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <p className="text-lg font-bold">Sudah</p>
+                    </div>
+                  </a>
+                </Link>
+                <Link href="#">
+                  <a className="h-full text-center -top-6">
+                    <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <p className="text-lg font-bold">Semua</p>
+                    </div>
+                  </a>
+                </Link>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-2xl font-bold mb-2">Riwayat Vaksin Anak</p>
+                <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2 bg-theme ">
+                  <div className="mx-4 my-2 font-bold">0 Bulan</div>
+                  <div className="flex flex-col mx-4">
+                    <div className="px-6 my-2 text-secondary-500 font-bold">
+                      Hepatitis B1
+                    </div>
+                    <div className="px-6 my-2 text-secondary-500 font-bold">
+                      Polio
                     </div>
                   </div>
-                  <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2">
-                    <div className="mx-4 my-2 font-bold">1 Bulan</div>
-                    <div className="flex flex-col mx-4">
-                      <div className="px-6 my-2 text-secondary-500 font-bold">
-                        BCG
-                      </div>
+                  <div className="flex flex-col mx-4">
+                    <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                      Belum
                     </div>
-                    <div className="flex flex-col mx-4">
-                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
-                        Belum
-                      </div>
+                    <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                      Belum
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2">
+                  <div className="mx-4 my-2 font-bold">1 Bulan</div>
+                  <div className="flex flex-col mx-4">
+                    <div className="px-6 my-2 text-secondary-500 font-bold">
+                      BCG
+                    </div>
+                  </div>
+                  <div className="flex flex-col mx-4">
+                    <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                      Belum
                     </div>
                   </div>
                 </div>
               </div>
-            </TabPanel>
-            <TabPanel key={2} value={2}>
-              <div className="flex flex-col">
-                <p className="text-2xl font-bold">Tabel Tumbuh Kembang Anak</p>
-                <Table
-                  columns={columns}
-                  dataSource={dataSource}
-                  pagination={false}
-                  rowClassName={(record, index) => "font-bold"}
-                />
-              </div>
-            </TabPanel>
-          </TabsBody>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="Pertumbuhan" key="2">
+            <div className="flex flex-col">
+              <p className="text-2xl font-bold">Tabel Tumbuh Kembang Anak</p>
+              <Table
+                columns={columns}
+                dataSource={dataSource}
+                pagination={false}
+                rowClassName={(record, index) => "font-bold"}
+              />
+            </div>
+          </Tabs.TabPane>
         </Tabs>
       </div>
 
