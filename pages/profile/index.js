@@ -16,6 +16,7 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
+import { Table } from "antd";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -53,6 +54,45 @@ export default function Pofile() {
     return await resData.json();
   };
 
+  const columns = [
+    {
+      title: "Bulan",
+      dataIndex: "bulan",
+      key: "bulan",
+    },
+    {
+      title: "Tinggi Badan(cm)",
+      dataIndex: "tinggi_bdn",
+      key: "tinggi_bdn",
+    },
+    {
+      title: "Berat Badan(kg)",
+      dataIndex: "berat_bdn",
+      key: "berat_bdn",
+    },
+    {
+      title: "Lingkar Kepala (cm)",
+      dataIndex: "ling_kepala",
+      key: "ling_kepala",
+    },
+    {
+      title: "Tanggal Submit",
+      dataIndex: "tgl_submit",
+      key: "tgl_submit",
+    },
+  ];
+
+  const dataSource = [
+    {
+      key: "1",
+      bulan: "0",
+      tinggi_bdn: "46.3 - 53.4",
+      berat_bdn: "2.5 - 4.3",
+      ling_kepala: "32.1 - 36.9",
+      tgl_submit: "Update",
+    },
+  ];
+
   return (
     <Layout title="Home" back="/">
       {/* profile */}
@@ -81,7 +121,7 @@ export default function Pofile() {
             <SwiperSlide key={1} style={{ width: "50%" }}>
               <Link href="#">
                 <a className="h-full text-center -top-6">
-                  <div className="bg-info-100 rounded-full px-4 py-3 mb-5">
+                  <div className="bg-theme rounded-full px-4 py-3 mb-5">
                     <p className="text-white font-bold text-lg text-secondary-500">
                       Tambah +
                     </p>
@@ -113,9 +153,9 @@ export default function Pofile() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row mt-4 justify-content-center border-solid border-2 border-grey-200 rounded-md">
+        <div className="flex flex-row mt-4 justify-content-center border-solid border-2 border-theme rounded-md">
           <div className="basis-2/6">
-            <div className="text-center my-2 ml-2 border-r-2 border-grey-200">
+            <div className="text-center my-2 ml-2 border-r-2 border-theme">
               <p>Tinggi Badan</p>
               <p className="mt-2">
                 52 <sub>cm</sub>
@@ -123,7 +163,7 @@ export default function Pofile() {
             </div>
           </div>
           <div className="basis-2/6">
-            <div className="text-center my-2 border-r-2 border-grey-200">
+            <div className="text-center my-2 border-r-2 border-theme">
               <p>Berat Badan</p>
               <p className="mt-2">
                 10 <sub>kg</sub>
@@ -157,34 +197,72 @@ export default function Pofile() {
                 <div className="flex flex-row">
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
                         <p className="text-lg font-bold">Belum</p>
                       </div>
                     </a>
                   </Link>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
                         <p className="text-lg font-bold">Sudah</p>
                       </div>
                     </a>
                   </Link>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="text-grey-800 rounded-full border border-grey-500 cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
+                      <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
                         <p className="text-lg font-bold">Semua</p>
                       </div>
                     </a>
                   </Link>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-2xl font-bold">Riwayat Vaksin Anak</p>
+                  <p className="text-2xl font-bold mb-2">Riwayat Vaksin Anak</p>
+                  <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2 bg-theme ">
+                    <div className="mx-4 my-2 font-bold">0 Bulan</div>
+                    <div className="flex flex-col mx-4">
+                      <div className="px-6 my-2 text-secondary-500 font-bold">
+                        Hepatitis B1
+                      </div>
+                      <div className="px-6 my-2 text-secondary-500 font-bold">
+                        Polio
+                      </div>
+                    </div>
+                    <div className="flex flex-col mx-4">
+                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                        Belum
+                      </div>
+                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                        Belum
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between flex-row w-full p-2 border-solid border-2 border-theme rounded-lg mt-2">
+                    <div className="mx-4 my-2 font-bold">1 Bulan</div>
+                    <div className="flex flex-col mx-4">
+                      <div className="px-6 my-2 text-secondary-500 font-bold">
+                        BCG
+                      </div>
+                    </div>
+                    <div className="flex flex-col mx-4">
+                      <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                        Belum
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabPanel>
             <TabPanel key={2} value={2}>
               <div className="flex flex-col">
                 <p className="text-2xl font-bold">Tabel Tumbuh Kembang Anak</p>
+                <Table
+                  columns={columns}
+                  dataSource={dataSource}
+                  pagination={false}
+                  rowClassName={(record, index) => "font-bold"}
+                />
               </div>
             </TabPanel>
           </TabsBody>
