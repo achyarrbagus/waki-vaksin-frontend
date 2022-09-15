@@ -109,7 +109,7 @@ class ActionProvider {
     );
     this.addMessageToState(message2);
   };
-  
+
   handleInputNamaAnak = () => {
     var els = document.querySelector(
       'input[class="react-chatbot-kit-chat-input"]'
@@ -142,13 +142,15 @@ class ActionProvider {
     );
     els.focus();
     // els.setAttribute("type", "number");
-    els.value = '+62';
-
+    els.value = "+62";
   };
 
   handleViewProfile = (props) => {
     const message2 = this.createChatBotMessage(
-      `Silakan klik link berikut untuk melihat buku vaksin anak An. Nama_Anak. link_profil_anak`,
+      `Silakan klik link berikut untuk melihat buku vaksin anak An. Nama_Anak.`,
+      {
+        widget: "Link_profile",
+      },
       {
         delay: 300,
       }
