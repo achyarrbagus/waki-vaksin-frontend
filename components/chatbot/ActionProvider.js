@@ -1,10 +1,8 @@
-import { useState, useContext } from "react";
-import AppContext from "@/components/AppContext";
-
 class ActionProvider {
-  constructor(createChatBotMessage, setStateFunc, createClientMessage) {
+  constructor(createChatBotMessage, setStateFunc, createClientMessage, state) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
+    this.state = state;
     this.createClientMessage = createClientMessage;
   }
 
@@ -32,9 +30,6 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
-  // const message = this.createChatBotMessage("Hello,what do you want ?", {
-  //   widget: "options",
-  // });
   messageHandler = () => {
     const message = this.createChatBotMessage("Hello,what do you want ?");
     this.setChatbotMessage(message);
@@ -52,8 +47,6 @@ class ActionProvider {
     }));
   };
 
-  /*  const message = this.createClientMessage("#Ayah :");
-   this.addMessageToState(message); */
   handleAyah = () => {
     var els = document.querySelector(
       'input[class="react-chatbot-kit-chat-input"]'
@@ -71,6 +64,8 @@ class ActionProvider {
   };
 
   handleVaksinStatus = (props) => {
+    this.setState((state) => ({ ...state, NamaOrtu: props }));
+
     const message = this.createChatBotMessage(
       `Apakah ${props} sudah pernah cek status vaksin anak Anda di Cepat Sehat?`,
       {
@@ -84,7 +79,7 @@ class ActionProvider {
     const message = this.createClientMessage("Sudah");
     this.addMessageToState(message);
     const message2 = this.createChatBotMessage(
-      `Silahkan masukkan nomor handphone Bunda ${props} yang telah terdaftar.`,
+      `Silahkan masukkan nomor handphone ${this.state.NamaOrtu} yang telah terdaftar.`,
       {
         widget: "No_hp",
       },
@@ -99,7 +94,7 @@ class ActionProvider {
     const message = this.createClientMessage("Belum");
     this.addMessageToState(message);
     const message2 = this.createChatBotMessage(
-      `Baik, Vaksini membutuhkan data diri anak  ${props}. Silahkan masukkan data anak  ${props}:`,
+      `Baik, Vaksini membutuhkan data diri anak ${this.state.NamaOrtu}. Silahkan masukkan data anak ${this.state.NamaOrtu}:`,
       {
         widget: "Data_anak",
       },
@@ -110,31 +105,31 @@ class ActionProvider {
     this.addMessageToState(message2);
   };
 
-  handleInputNamaAnak = () => {
-    var els = document.querySelector(
-      'input[class="react-chatbot-kit-chat-input"]'
-    );
-    els.focus();
-    els.value = "Nama Anak: ";
-  };
+  // handleInputNamaAnak = () => {
+  //   var els = document.querySelector(
+  //     'input[class="react-chatbot-kit-chat-input"]'
+  //   );
+  //   els.focus();
+  //   els.value = "Nama Anak: ";
+  // };
 
-  handleInputTglLahir = () => {
-    var els = document.querySelector(
-      'input[class="react-chatbot-kit-chat-input"]'
-    );
-    els.focus();
-    els.setAttribute("type", "date");
-  };
+  // handleInputTglLahir = () => {
+  //   var els = document.querySelector(
+  //     'input[class="react-chatbot-kit-chat-input"]'
+  //   );
+  //   els.focus();
+  //   els.setAttribute("type", "date");
+  // };
 
-  handleInputJkL = () => {
-    const message = this.createClientMessage(`Laki-Laki`);
-    this.addMessageToState(message);
-  };
+  // handleInputJkL = () => {
+  //   const message = this.createClientMessage(`Laki-Laki`);
+  //   this.addMessageToState(message);
+  // };
 
-  handleInputJkP = () => {
-    const message = this.createClientMessage(`Perempuan`);
-    this.addMessageToState(message);
-  };
+  // handleInputJkP = () => {
+  //   const message = this.createClientMessage(`Perempuan`);
+  //   this.addMessageToState(message);
+  // };
 
   handleInputNoHP = () => {
     var els = document.querySelector(

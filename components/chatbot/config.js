@@ -42,16 +42,19 @@ const config = {
     header: () => <Header />,
     botAvatar: (props) => <Botavatar {...props} />,
   },
-  state: {},
+  state: {
+    NamaOrtu: "",
+  },
   widgets: [
     {
       widgetName: "NamaOrtu",
       widgetFunc: (props) => <NamaOrtu {...props} />,
+      mapStateToProps: ["NamaOrtu"],
     },
     {
       widgetName: "StatusVaksin",
       widgetFunc: (props) => <StatusVaksin {...props} />,
-      mapStateToProps: ["name"],
+      mapStateToProps: ["NamaOrtu"],
     },
     {
       widgetName: "Data_anak",
