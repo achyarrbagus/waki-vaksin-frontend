@@ -87,7 +87,7 @@ export default function Pofile() {
   ];
 
   return (
-    <Layout title="Home" back="/">
+    <Layout title="Profile" back="/">
       {/* profile */}
       <div className="bg-white flex flex-col px-6 pt-6">
         {/* btn nama anak */}

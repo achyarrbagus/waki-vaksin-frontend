@@ -115,7 +115,7 @@ class ActionProvider {
       'input[class="react-chatbot-kit-chat-input"]'
     );
     els.focus();
-    els.value = "Nama: ";
+    els.value = "Nama Anak: ";
   };
 
   handleInputTglLahir = () => {

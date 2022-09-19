@@ -1,11 +1,10 @@
 import { Spin, message, DatePicker } from "antd";
 import moment from "moment";
+import { Input, Select, Option } from "@material-tailwind/react";
 
 const Data_anak = (props) => {
   const as = props.state.messages.message;
-    const date = new Date(
-      new Date().setFullYear(new Date().getFullYear() - 17)
-    );
+  const date = new Date(new Date().setFullYear(new Date().getFullYear() - 17));
 
   return (
     <>
@@ -13,7 +12,19 @@ const Data_anak = (props) => {
         <h1 className="options-header">Data Anak</h1>
         <div className="options-container">
           <div className="flex flex-col w-3/5">
-            <div
+            <div className="my-2">
+              <Input label="Nama Anak" error />
+            </div>
+            <div className="my-2">
+              <Input label="Tanggal Lahir Anak" type={"date"} error />
+            </div>
+            <div className="my-2">
+              <Select label="Jenis Kelamin Anak" error>
+                <Option>Laki - Laki</Option>
+                <Option>Perempuan</Option>
+              </Select>
+            </div>
+            {/* <div
               className="option-item font-bold"
               onClick={props.actionProvider.handleInputNamaAnak}
               key="1"
@@ -42,6 +53,9 @@ const Data_anak = (props) => {
               >
                 <p className="">Perempuan </p>
               </div>
+            </div> */}
+            <div className="option-item font-bold" onClick={""} key="1">
+              <p className="">Submit</p>
             </div>
           </div>
         </div>
