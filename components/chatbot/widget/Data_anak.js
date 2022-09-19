@@ -5,7 +5,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const Data_anak = (props) => {
-  const as = props.state.messages.message;
   const date = new Date(new Date().setFullYear(new Date().getFullYear() - 17));
   const RegisterSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,12 +19,12 @@ const Data_anak = (props) => {
     // var phone = t("phone_code") + values.phone;
     // var dt = {
     //   name: values.name,
-    //   phone: phone,
+    //   gender: values.values,
     //   dateofbirth: values.dateofbirth,
     // };
     // context.setdata_diri(dt);
     // setLoading(true);
-    // const resData = await fetch(`/api/post_quest`, {
+    // const resData = await fetch(`/api/post_data_anak`, {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -33,12 +32,9 @@ const Data_anak = (props) => {
     //   },
     //   body: JSON.stringify({
     //     data: {
-    //       cont: context,
+    //       gender: values.gender,
     //       name: values.name,
-    //       phone: phone,
-    //       local: locals,
     //       dateofbirth: values.dateofbirth,
-    //       camp: datacamp,
     //     },
     //   }),
     // });
@@ -49,9 +45,9 @@ const Data_anak = (props) => {
     // } else {
     //   setLoading(false);
     //   message.success(`Success`);
-    //   router.push(`/step/surat?phone=${values.phone}&uid=${res.uid}`);
     // }
   };
+
   return (
     <>
       <div className="options">
@@ -67,7 +63,7 @@ const Data_anak = (props) => {
                 <div className="my-2">
                   <Field
                     name="email"
-                    className="w-full py-2 px-3 rounded-full text-sm text-secondary-500 bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1"
+                    className="w-full py-2 px-3 text-sm bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1"
                     type="email"
                     placeholder="Nama Anak"
                   />{" "}
@@ -80,7 +76,7 @@ const Data_anak = (props) => {
                     onChange={(date, dateString) =>
                       setFieldValue("dateofbirth", dateString)
                     }
-                    className={`py-2 px-3 rounded-full text-lg text-secondary-500 bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
+                    className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
                   />
                 </div>
                 <div className="my-2">
@@ -88,10 +84,14 @@ const Data_anak = (props) => {
                     as="select"
                     name="gender"
                     placeholder="Jenis Kelamin Anak"
-                    className={`py-2 px-3 rounded-full text-lg text-secondary-500 bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
+                    className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
                   >
-                    <option value="male">Laki - Laki</option>
-                    <option value="female">Perempuan</option>
+                    <option className="" value="male">
+                      Laki - Laki
+                    </option>
+                    <option className="" value="female">
+                      Perempuan
+                    </option>
                   </Field>
                 </div>
               </Form>

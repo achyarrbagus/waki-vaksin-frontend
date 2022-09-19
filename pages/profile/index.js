@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Skeleton from "react-loading-skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Table, Tabs } from "antd";
+import { Table, Tabs, Button, Modal } from "antd";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -21,31 +21,31 @@ export async function getStaticProps({ locale }) {
 export default function Pofile() {
   const { t, i18n } = useTranslation();
   const [articles, setArticles] = useState(null);
-  const [doctors, setDoctors] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    onInit();
-  }, [i18n.language]);
+  // useEffect(() => {
+  //   onInit();
+  // }, [i18n.language]);
 
-  const onInit = async () => {
-    Promise.all([fetchArticles()])
-      .then(([articles, doctors]) => {
-        setArticles(articles);
-      })
-      .catch((err) => {
-        setArticles(null);
-      });
-  };
+  // const onInit = async () => {
+  //   Promise.all([fetchArticles()])
+  //     .then(([articles, doctors]) => {
+  //       setArticles(articles);
+  //     })
+  //     .catch((err) => {
+  //       setArticles(null);
+  //     });
+  // };
 
-  const fetchArticles = async () => {
-    const resData = await fetch(`/api/articles?locale=${i18n.language}`, {
-      method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-    return await resData.json();
-  };
+  // const fetchArticles = async () => {
+  //   const resData = await fetch(`/api/articles?locale=${i18n.language}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Access-Control-Allow-Origin": "*",
+  //     },
+  //   });
+  //   return await resData.json();
+  // };
 
   const columns = [
     {
@@ -86,6 +86,19 @@ export default function Pofile() {
     },
   ];
 
+  const showModal = () => {
+    setIsModalOpen(true);
+    console.log(isModalOpen);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Layout title="Profile" back="/">
       {/* profile */}
@@ -102,7 +115,7 @@ export default function Pofile() {
                 </a>
               </Link>
             </SwiperSlide>
-            <SwiperSlide key={1} style={{ width: "50%" }}>
+            <SwiperSlide key={2} style={{ width: "50%" }}>
               <Link href="#">
                 <a className="h-full text-center -top-6">
                   <div className="bg-secondary-500 rounded-full px-4 py-3 mb-5">
@@ -111,7 +124,7 @@ export default function Pofile() {
                 </a>
               </Link>
             </SwiperSlide>
-            <SwiperSlide key={1} style={{ width: "50%" }}>
+            <SwiperSlide key={3} style={{ width: "50%" }}>
               <Link href="#">
                 <a className="h-full text-center -top-6">
                   <div className="bg-theme rounded-full px-4 py-3 mb-5">
@@ -146,7 +159,10 @@ export default function Pofile() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row mt-4 justify-content-center border-solid border-2 border-theme rounded-md">
+        <div
+          className="flex flex-row mt-4 cursor-pointer justify-content-center border-solid border-2 border-theme rounded-md"
+          onClick={showModal}
+        >
           <div className="basis-2/6">
             <div className="text-center my-2 ml-2 border-r-2 border-theme">
               <p>Tinggi Badan</p>
@@ -271,6 +287,16 @@ export default function Pofile() {
         {/* )} */}
       </div>
       <Footer />
+      <Modal
+        title="Basic Modal"
+        open={true}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </Layout>
   );
 }
