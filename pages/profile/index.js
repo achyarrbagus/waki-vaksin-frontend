@@ -297,7 +297,7 @@ export default function Pofile() {
           onOk={handleOk}
           onCancel={handleCancel}
           maskClosable={false}
-          width={400}
+          width={370}
           footer={[
             <Button
               key="back"
@@ -307,6 +307,7 @@ export default function Pofile() {
               Batal
             </Button>,
             <Button
+              key="submit"
               type="primary"
               className="w-2/4 bg-secondary-500 rounded-full hover:bg-white hover:text-secondary-500 hover:border-secondary-500 border-solid border border-secondary-500"
               onClick={handleOk}
