@@ -100,3 +100,19 @@ $borderColor: #e7e8f3;
 .ant-tabs-ink-bar {
   background: #fd8312 !important;
 }
+.ant-modal-footer {
+  display: flex;
+  width: 100%;
+}
+.ant-modal-close-x {
+  background: #fd8312 !important;
+  color: #f8f8fc;
+  font-size: 22px;
+  border-radius: 100px;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  line-height: unset;
+  right: -8px;
+  top: -8px;
+}
