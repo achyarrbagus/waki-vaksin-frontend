@@ -9,7 +9,16 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Skeleton from "react-loading-skeleton";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Table, Tabs, Modal, Button, DatePicker, Spin, TimePicker } from "antd";
+import {
+  Table,
+  Tabs,
+  Modal,
+  Button,
+  DatePicker,
+  Spin,
+  TimePicker,
+  Select,
+} from "antd";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -25,6 +34,7 @@ export default function Pofile() {
   const [articles, setArticles] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { Option } = Select;
 
   const RegisterSchema = Yup.object().shape({
     name: Yup.string()
@@ -212,8 +222,25 @@ export default function Pofile() {
           </Formik>
         </div>
         <div className="flex flex-col jusifty-between bg-white mt-2 px-5 pt-5">
-          <p className="text-xl font-bold">Data Anak</p>
-          <div className="flex flex-col bg-theme p-5 rounded-xl"></div>
+          <p className="text-xl font-bold mb-4">Data Anak</p>
+          <div className="flex flex-col bg-theme p-5 rounded-xl">
+            <div className="mb-5">
+              <label className="block mb-1 font-bold text-gray-700 text-sm">
+                Nama Anak
+              </label>
+              <Select defaultValue="1" className="select-after">
+                <Option value="1">Nama anak</Option>
+              </Select>
+            </div>
+            <div className="mb-5">
+              <label className="block mb-1 font-bold text-gray-700 text-sm">
+                Jenis Vaksin
+              </label>
+              <Select defaultValue="1" className="select-after">
+                <Option value="1">Nama Vaksin</Option>
+              </Select>
+            </div>
+          </div>
         </div>
         <Footer />
       </Layout>
