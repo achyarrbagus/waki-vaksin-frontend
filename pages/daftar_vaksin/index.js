@@ -210,7 +210,11 @@ export default function Pofile() {
               </Form>
             )}
           </Formik>
-        </div>{" "}
+        </div>
+        <div className="flex flex-col jusifty-between bg-white mt-2 px-5 pt-5">
+          <p className="text-xl font-bold">Data Anak</p>
+          <div className="flex flex-col bg-theme p-5 rounded-xl"></div>
+        </div>
         <Footer />
       </Layout>
     </>
