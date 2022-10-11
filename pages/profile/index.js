@@ -111,7 +111,7 @@ export default function Pofile() {
                 <SwiperSlide key={1} style={{ width: "50%" }}>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-secondary-500 rounded-full px-4 py-3 mb-5">
+                      <div className="bg-secondary-500 rounded-full px-4 py-2 mb-5">
                         <p className="text-white font-bold text-lg">
                           Nama Anak
                         </p>
@@ -122,7 +122,7 @@ export default function Pofile() {
                 <SwiperSlide key={2} style={{ width: "50%" }}>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-secondary-500 rounded-full px-4 py-3 mb-5">
+                      <div className="bg-secondary-500 rounded-full px-4 py-2 mb-5">
                         <p className="text-white font-bold text-lg">
                           Nama Anak
                         </p>
@@ -133,7 +133,7 @@ export default function Pofile() {
                 <SwiperSlide key={3} style={{ width: "50%" }}>
                   <Link href="#">
                     <a className="h-full text-center -top-6">
-                      <div className="bg-theme rounded-full px-4 py-3 mb-5">
+                      <div className="bg-theme rounded-full px-4 py-2 mb-5">
                         <p className="text-white font-bold text-lg text-secondary-500">
                           Tambah +
                         </p>
@@ -143,9 +143,6 @@ export default function Pofile() {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <Button type="primary" onClick={showModal}>
-              Open Modal
-            </Button>
             {/* profile anak */}
             <div className="flex flex-col justify-between mb-1">
               <div className="flex pt-4 bg-white">

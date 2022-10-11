@@ -222,7 +222,19 @@ export default function Pofile() {
           </Formik>
         </div>
         <div className="flex flex-col jusifty-between bg-white mt-2 px-5 pt-5">
-          <p className="text-xl font-bold mb-4">Data Anak</p>
+          <div className="flex flex-row justify-between py-4">
+            <div>
+              <p className="text-xl font-bold">Data Anak</p>
+            </div>
+            <div className="">
+              <button
+                type="button"
+                className="bg-secondary-100 text-secondary-500 font-bold  text-center text-sm px-2 py-1 rounded-full"
+              >
+                Tambah +
+              </button>
+            </div>
+          </div>
           <div className="flex flex-col bg-theme p-5 rounded-xl">
             <div className="mb-5">
               <label className="block mb-1 font-bold text-gray-700 text-sm">
@@ -239,6 +251,35 @@ export default function Pofile() {
               <Select defaultValue="1" className="select-after">
                 <Option value="1">Nama Vaksin</Option>
               </Select>
+            </div>
+          </div>
+          <div className="flex mt-10 bg-white">
+            <div className="w-full bg-gradient-to-r from-primary-700 to-primary-600 rounded-xl p-5">
+              <div className="flex justify-center">
+                <svg
+                  width="50"
+                  height="54"
+                  viewBox="0 0 25 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.077 0C5.3666 0 0.732056 4.48 0.732056 10C0.732056 15.52 5.3666 20 11.077 20C16.7874 20 21.422 15.52 21.422 10C21.422 4.48 16.7874 0 11.077 0ZM12.1115 17H10.0425V15H12.1115V17ZM14.2529 9.25L13.3219 10.17C12.577 10.9 12.1115 11.5 12.1115 13H10.0425V12.5C10.0425 11.4 10.508 10.4 11.2529 9.67L12.5357 8.41C12.9184 8.05 13.146 7.55 13.146 7C13.146 5.9 12.215 5 11.077 5C9.93908 5 9.00803 5.9 9.00803 7H6.93904C6.93904 4.79 8.79078 3 11.077 3C13.3633 3 15.215 4.79 15.215 7C15.215 7.88 14.8426 8.68 14.2529 9.25Z"
+                    fill="white"
+                  />
+                </svg>
+                <p className="text-white px-2 text-lg">
+                  <b>Ada Pertanyaan? </b>Tim kami siap membantu kamu secara
+                  langsung
+                </p>
+              </div>
+              <div className="flex justify-center py-4">
+                <Link href="https://api.whatsapp.com/send/?phone=6281281881802&text&app_absent=0">
+                  <a className="font-bold text-white hover:text-white text-lg text-center w-full px-3 py-2 border-2 border-white rounded-full">
+                    Hubungi Melalui WhatsApp
+                  </a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
