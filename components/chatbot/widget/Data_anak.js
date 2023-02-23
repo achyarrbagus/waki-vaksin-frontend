@@ -59,42 +59,44 @@ const Data_anak = (props) => {
               validationSchema={RegisterSchema}
               onSubmit={onSubmitForm}
             >
-              <Form>
-                <div className="my-2">
-                  <Field
-                    name="email"
-                    className="w-full py-2 px-3 text-sm bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1"
-                    type="email"
-                    placeholder="Nama Anak"
-                  />{" "}
-                </div>
-                <div className="my-2">
-                  <DatePicker
-                    format="YYYY-MM-DD"
-                    name="dateofbirth"
-                    placeholder="Tanggal Lahir Anak"
-                    onChange={(date, dateString) =>
-                      setFieldValue("dateofbirth", dateString)
-                    }
-                    className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
-                  />
-                </div>
-                <div className="my-2">
-                  <Field
-                    as="select"
-                    name="gender"
-                    placeholder="Jenis Kelamin Anak"
-                    className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
-                  >
-                    <option className="" value="male">
-                      Laki - Laki
-                    </option>
-                    <option className="" value="female">
-                      Perempuan
-                    </option>
-                  </Field>
-                </div>
-              </Form>
+              {({ errors, touched, setFieldValue }) => (
+                <Form>
+                  <div className="my-2">
+                    <Field
+                      name="email"
+                      className="w-full py-2 px-3 text-sm bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1"
+                      type="email"
+                      placeholder="Nama Anak"
+                    />{" "}
+                  </div>
+                  <div className="my-2">
+                    <DatePicker
+                      format="YYYY-MM-DD"
+                      name="dateofbirth"
+                      placeholder="Tanggal Lahir Anak"
+                      onChange={(date, dateString) =>
+                        setFieldValue("dateofbirth", dateString)
+                      }
+                      className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
+                    />
+                  </div>
+                  <div className="my-2">
+                    <Field
+                      as="select"
+                      name="gender"
+                      placeholder="Jenis Kelamin Anak"
+                      className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
+                    >
+                      <option className="" value="male">
+                        Laki - Laki
+                      </option>
+                      <option className="" value="female">
+                        Perempuan
+                      </option>
+                    </Field>
+                  </div>
+                </Form>
+              )}
             </Formik>
             {/* <div
               className="option-item font-bold"
