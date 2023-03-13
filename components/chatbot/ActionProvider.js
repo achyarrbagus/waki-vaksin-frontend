@@ -1,4 +1,8 @@
+import { useContext, useEffect } from "react";
+import AppContext from "@/components/AppContext";
+
 class ActionProvider {
+  context = useContext(AppContext);
   constructor(createChatBotMessage, setStateFunc, createClientMessage, state) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
@@ -47,7 +51,7 @@ class ActionProvider {
     }));
   };
 
-  handleAyah = () => {
+  handleAyah = (props) => {
     var els = document.querySelector(
       'input[class="react-chatbot-kit-chat-input"]'
     );
@@ -73,6 +77,10 @@ class ActionProvider {
       }
     );
     this.addMessageToState(message);
+    let wordInput = props.split(": ");
+    let namaOrtu = [...wordInput];
+    console.log(namaOrtu[1]);
+    this.context.setNamaOrtu(namaOrtu[1]);
   };
 
   handleSudahVaksin = (props) => {
@@ -103,6 +111,43 @@ class ActionProvider {
       }
     );
     this.addMessageToState(message2);
+    // console.log(this.context);
+  };
+
+  onSubmitForm = async (values) => {
+    // setLoading(true);
+    // // var phone = t("phone_code") + values.phone;
+    // var dt = {
+    //   name: values.name,
+    //   gender: values.values,
+    //   dateofbirth: values.dateofbirth,
+    // };
+    // context.setdata_diri(dt);
+    // setLoading(true);
+    // // console.log(values.name);
+    // const resData = await fetch(`/api/v1/anak`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    //   body: JSON.stringify({
+    //     data: {
+    //       gender: values.gender,
+    //       name: values.name,
+    //       dateofbirth: values.dateofbirth,
+    //     },
+    //   }),
+    // });
+    // const res = await resData.json();
+    // if (resData.status != 200) {
+    //   message.error(res.message);
+    //   setLoading(false);
+    // } else {
+    //   setLoading(false);
+    //   message.success(`Success`);
+    // }
+    // console.log(resData);
   };
 
   // handleInputNamaAnak = () => {

@@ -19,7 +19,7 @@ class MessageParser {
     } else if (lowercase.includes("+62")) {
       this.actionProvider.handleViewProfile(message);
     } else {
-      // this.actionProvider.handleUnknown();
+      this.actionProvider.handleUnknown();
     }
   }
 }
