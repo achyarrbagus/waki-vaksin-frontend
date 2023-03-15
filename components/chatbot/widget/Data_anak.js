@@ -5,9 +5,9 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useContext } from "react";
 import AppContext from "@/components/AppContext";
+import ActionProvider from "../ActionProvider";
 
 const Data_anak = (props) => {
-  // console.log(props);
   const context = useContext(AppContext);
   const date = new Date(new Date().setFullYear(new Date().getFullYear() - 17));
   const RegisterSchema = Yup.object().shape({
@@ -20,101 +20,85 @@ const Data_anak = (props) => {
   });
 
   const onSubmitForm = async (values) => {
-    console.log(values);
+    // console.log(values);
+    context.setAnak([]);
 
-    // var phone = t("phone_code") + values.phone;
-    var dt = {
-      name: values.name,
-      gender: values.gender,
-      dateofbirth: values.dateofbirth,
-      user_id: 1,
-      vaksin_id: 1,
-    };
+    //  Ortu
+    if (context.state.NamaOrtu == "") {
+      message.error(`Data error, please re-enter data`);
+    } else {
+      // var dt = {
+      //   fullname: context.state.NamaOrtu,
+      // };
+      // context.state.NamaOrtu(dt);
 
-    // if (context.state.anak == []) {
-    //   message.error(`Data error, please re-enter data`);
-    //   // router.push(`/mvp/surat?camp=${datacamp}`);
-    // }
+      // setLoading(true);
 
-    // console.log(dt);
-    // console.log(context.state.anak.push(dt));
-    // console.log(context.state);
-    // console.log(context.state.NamaOrtu);
+      const resData = await fetch(`${process.env.URL_API}/user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          fullname: context.state.NamaOrtu,
+          // phone: phone,
+          // local: locals,
+          // dateofbirth: values.dateofbirth,
+          // camp: datacamp,
+        }),
+      });
 
-    // setLoading(true);
-    const resData = await fetch(`${process.env.URL_API}/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        data: {
+      const res = await resData.json();
+      console.log(res);
+
+      if (resData.status != 200) {
+        // setLoading(false);
+        message.error(res.message);
+        // router.push(`${context.state.urls}/one?camp=${datacamp}`);
+      } else {
+        // console.log(res.data.id);
+
+        const resData = await fetch(`${process.env.URL_API}/anak`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            name: values.name,
+            gender: values.gender,
+            dateofbirth: values.dateofbirth,
+            user_id: res.data.id,
+            vaksin_id: 1,
+          }),
+        });
+        const resApiAnak = await resData.json();
+        if (resData.status != 200) {
+          message.error(resApiAnak.message);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          message.success(`Success`);
+          console.log(resApiAnak);
+          console.log(props);
+          props.actionProvider.handleAnakAfterSubmit();
+        }
+        message.success(`Success`);
+        // var phone = t("phone_code") + values.phone;
+        var dt = {
           name: values.name,
           gender: values.gender,
           dateofbirth: values.dateofbirth,
-          user_id: 1,
-          vaksin_id: 1,
-        },
-      }),
-    });
-    const res = await resData.json();
-    console.log(res);
-    if (resData.status != 200) {
-      message.error(res.message);
-      alert("error");
-      // setLoading(false);
-    } else {
-      // setLoading(false);
-      alert("success");
-      message.success(`Success`);
+        };
+
+        console.log(dt);
+        console.log(context.setAnak(dt));
+        console.log(context.state);
+        console.log(context.state.NamaOrtu);
+        // router.push(`/mvp/step/surat?uid=${res.uid}&camp=${datacamp}`);
+      }
     }
-
-    // if (context.state.NamaOrtu == "") {
-    //   message.error(`Data error, please re-enter data`);
-    //   // router.push(`/mvp/surat?camp=${datacamp}`);
-    // } else {
-    //   // var phone = t("phone_code") + values.phone;
-    //   var dt = {
-    //     name: context.NamaOrtu,
-    //   };
-    //   context.NamaOrtu(dt);
-
-    //   // setLoading(true);
-
-    //   const resData = await fetch(`/user`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Origin": "*",
-    //     },
-    //     body: JSON.stringify({
-    //       data: {
-    //         fullname: context.state.NamaOrtu,
-    //         // phone: phone,
-    //         // local: locals,
-    //         // dateofbirth: values.dateofbirth,
-    //         // camp: datacamp,
-    //       },
-    //     }),
-    //   });
-
-    //   const res = await resData.json();
-    //   console.log(resData);
-
-    //   if (resData.status != 200) {
-    //     // setLoading(false);
-    //     message.error(res.message);
-    //     // router.push(`${context.state.urls}/one?camp=${datacamp}`);
-    //   } else {
-    //     // setLoading(false);
-    //     // i18n.language == "vn"
-    //     //   ? message.success(`Thành công`)
-    //     // :
-    //     message.success(`Success`);
-    //     // router.push(`/mvp/step/surat?uid=${res.uid}&camp=${datacamp}`);
-    //   }
-    // }
   };
 
   return (

@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
   const [addr, setAddr] = useState("");
   const [slugs, setSlugs] = useState("");
   const [email, setEmail] = useState("");
-  const [namaAnak, setNamaAnak] = useState("");
+  const [anak, setAnak] = useState([]);
   const [tanggalLahir, setTanggalLahir] = useState("");
   const [jenisKelamin, setJenisKelamin] = useState("");
 
@@ -86,12 +86,13 @@ function MyApp({ Component, pageProps }) {
             addr: addr,
             slugs: slugs,
             email: email,
-            anak: [],
+            anak: anak,
           },
           setNamaOrtu: setNamaOrtu,
           setAddr: setAddr,
           setSlugs: setSlugs,
           setEmail: setEmail,
+          setAnak: setAnak,
         }}
       >
         <Component {...pageProps} />

@@ -6,6 +6,7 @@ import StatusVaksin from "@/components/chatbot/widget/StatusVaksin";
 import Data_anak from "@/components/chatbot/widget/Data_anak";
 import No_hp from "@/components/chatbot/widget/No_hp";
 import Link_profile from "@/components/chatbot/widget/Link_profile";
+import DetailAnakAfterSubmit from "./widget/DetailAnakAfterSubmit";
 // import Contact from "./widgets/Contact";
 // import MedicineDelivery from "./widgets/MedicineDelivery";
 // import CoBotAvatar from "./CoBotAvatar";
