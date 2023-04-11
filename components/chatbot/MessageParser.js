@@ -15,7 +15,6 @@ class MessageParser {
       lowercase.includes("Nama Anak: ") ||
       lowercase.includes("ayah:")
     ) {
-      this.actionProvider.handleAnakAfterSubmit(message);
       this.actionProvider.handleViewProfile(message);
     } else if (lowercase.includes("+62")) {
       this.actionProvider.handleViewProfile(message);

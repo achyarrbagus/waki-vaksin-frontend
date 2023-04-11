@@ -13,6 +13,7 @@ import { switchGTM } from "/helpers/gtm";
 import { switchGTM2 } from "/helpers/gtm2";
 import { useTranslation } from "next-i18next";
 import { ThemeProvider } from "@material-tailwind/react";
+import { vaksin } from "@/constant/vaksin";
 
 // const AppContext = createContext();
 function MyApp({ Component, pageProps }) {
@@ -74,6 +75,9 @@ function MyApp({ Component, pageProps }) {
   const [slugs, setSlugs] = useState("");
   const [email, setEmail] = useState("");
   const [anak, setAnak] = useState([]);
+  const [usia, setUsia] = useState();
+  const [vaksin, setVaksin] = useState();
+  const [phone, setPhone] = useState();
   const [tanggalLahir, setTanggalLahir] = useState("");
   const [jenisKelamin, setJenisKelamin] = useState("");
 
@@ -87,12 +91,18 @@ function MyApp({ Component, pageProps }) {
             slugs: slugs,
             email: email,
             anak: anak,
+            usia: usia,
+            vaksin: vaksin,
+            phone,
           },
           setNamaOrtu: setNamaOrtu,
           setAddr: setAddr,
           setSlugs: setSlugs,
           setEmail: setEmail,
           setAnak: setAnak,
+          setUsia: setUsia,
+          setVaksin: setVaksin,
+          setPhone,
         }}
       >
         <Component {...pageProps} />

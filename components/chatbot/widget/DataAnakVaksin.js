@@ -7,7 +7,7 @@ import { useContext } from "react";
 import AppContext from "@/components/AppContext";
 import ActionProvider from "../ActionProvider";
 
-const Data_anak = (props) => {
+const DataAnakVaksin = (props) => {
   const context = useContext(AppContext);
   const date = new Date(new Date().setFullYear(new Date().getFullYear() - 17));
   const RegisterSchema = Yup.object().shape({
@@ -19,13 +19,8 @@ const Data_anak = (props) => {
     dateofbirth: Yup.string().required("Required"),
   });
 
-  const getBulanUsiaVaksin = (dateString) => {
-    var months = moment().diff(dateString, "months", false);
-    context.setUsia(months);
-    return months;
-  };
-
   const onSubmitForm = async (values) => {
+    // console.log(values);
     var dt = {
       name: values.name,
       gender: values.gender,
@@ -78,21 +73,20 @@ const Data_anak = (props) => {
             gender: values.gender,
             dateofbirth: values.dateofbirth,
             user_id: res.data.id,
-            // vaksin_id: 1,
+            vaksin_id: 1,
           }),
         });
-
         const resApiAnak = await resData.json();
         if (resData.status != 200) {
           message.error(resApiAnak.message);
         } else {
           message.success(`Success`);
+
           props.actionProvider.handleAnakAfterSubmit(
             values.name,
             values.gender,
             values.dateofbirth
           );
-          getBulanUsiaVaksin(values.dateofbirth);
         }
         // message.success(`Success`);
         // var phone = t("phone_code") + values.phone;
@@ -216,4 +210,4 @@ const Data_anak = (props) => {
   );
 };
 
-export default Data_anak;
+export default DataAnakVaksin;

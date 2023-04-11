@@ -1,4 +1,5 @@
 const No_hp = (props) => {
+  console.log(props);
   return (
     <>
       <div className="options">
