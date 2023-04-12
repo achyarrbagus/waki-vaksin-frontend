@@ -112,6 +112,7 @@ const GetVaksinAnak = (props) => {
             >
               {options?.map((option) => {
                 return (
+                  // eslint-disable-next-line react/jsx-key
                   <ul>
                     <li>
                       <label>

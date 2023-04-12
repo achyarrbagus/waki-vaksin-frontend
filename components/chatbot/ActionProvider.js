@@ -15,6 +15,7 @@ class ActionProvider {
     this.setState = setStateFunc;
     this.state = state;
     this.createClientMessage = createClientMessage;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     this.context = useContext(AppContext);
   }
 
