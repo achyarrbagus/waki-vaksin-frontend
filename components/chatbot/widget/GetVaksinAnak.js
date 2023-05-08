@@ -9,13 +9,11 @@ const sleep = (ms) => new Promise((r) => setTimeout);
 const GetVaksinAnak = (props) => {
   const context = useContext(AppContext);
 
-  const [vaksinUsia, setVaksinUsia] = useState();
+  const [vaksinUsia, setVaksinUsia] = useState([]);
+  const [vaksinId, setVaksinId] = useState([]); //Save the selected category id
   // console.log(vaksinUsia);
+  console.log(vaksinId);
   context.setVaksin();
-  // console.log(context);
-  // const [loading, setLoading] = useState(true);
-  // console.log(vaksinUsia);
-  // console.log(context);
 
   useEffect(() => {
     fetchDataVaksinUsia();
@@ -41,25 +39,6 @@ const GetVaksinAnak = (props) => {
       });
   };
 
-  // const fetchInputVaksinUsia = async () => {
-  //   await fetch(`${process.env.URL_API}/listanakvaksin`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       usia: context.state.usia,
-  //     }),
-  //   })
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (json) {
-  //       // console.log(json.data);
-  //       setVaksinUsia(json.data);
-  //     });
-  // };
-
   const dataVaksinAnak = vaksinUsia;
   // console.log(dataVaksinAnak);
 
@@ -70,20 +49,20 @@ const GetVaksinAnak = (props) => {
     <div>
       <Formik
         initialValues={{
-          toggle: false,
           checked: [],
         }}
         onSubmit={async (values) => {
+          // console.log(values);
           context.setVaksin(values.checked);
           const jumlahBelumVaksin =
             `${vaksinUsia.length}` - `${values.checked.length}`;
-          // console.log(values.checked);
+          // console.log(values.checked);Zz
           // const data = values.checked.map((vaksinAnak) => {
           //   return vaksinAnak;
           // });
           // console.log(data);
-          await props.actionProvider.handlePilihSisaVaksin(values.checked);
-          await props.actionProvider.handleAnakAfterPilihVaksin(
+          await props?.actionProvider.handlePilihSisaVaksin(values.checked);
+          await props?.actionProvider.handleAnakAfterPilihVaksin(
             jumlahBelumVaksin
           );
         }}
@@ -110,11 +89,12 @@ const GetVaksinAnak = (props) => {
               aria-labelledby="checkbox-group"
               className="w-full py-2 px-3 text-sm bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 mb-4"
             >
-              {options?.map((option) => {
-                return (
-                  // eslint-disable-next-line react/jsx-key
-                  <ul>
-                    <li>
+              <ul>
+                {console.log(values)}
+                {options?.map((option, index) => {
+                  return (
+                    // eslint-disable-next-line react/jsx-key
+                    <li key={index}>
                       <label>
                         <Field
                           type="checkbox"
@@ -122,16 +102,17 @@ const GetVaksinAnak = (props) => {
                           value={option?.namevaksin}
                           className="bg-brown-800 m-4"
                         />
-                        {option.namevaksin}
+                        {option?.namevaksin}
                       </label>
                     </li>
-                  </ul>
-                );
-              })}
+                  );
+                })}
+              </ul>
             </div>
             <div className="flex justify-center">
               <button
                 type="submit"
+                // onClick={handleChangeVaksinId}
                 className="option-item font-bold w-2/3 pt-4 mt-4"
               >
                 Submit

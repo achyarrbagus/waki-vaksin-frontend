@@ -25,81 +25,6 @@ const Data_anak = (props) => {
     return months;
   };
 
-  const onSubmitForm = async (values) => {
-    var dt = {
-      name: values.name,
-      gender: values.gender,
-      dateofbirth: values.dateofbirth,
-    };
-
-    // console.log(dt);
-    console.log(context.setAnak(dt));
-    //  Ortu
-    if (context.state.NamaOrtu == "") {
-      message.error(`Data error, please re-enter data`);
-    } else {
-      // var dt = {
-      //   fullname: context.state.NamaOrtu,
-      // };
-      // context.state.NamaOrtu(dt);
-
-      // setLoading(true);
-
-      const resData = await fetch(`${process.env.URL_API}/user`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          fullname: context.state.NamaOrtu,
-          // phone: phone,
-          // local: locals,
-          // dateofbirth: values.dateofbirth,
-          // camp: datacamp,
-        }),
-      });
-
-      const res = await resData.json();
-      if (resData.status != 200) {
-        message.error(res.message);
-        // router.push(`${context.state.urls}/one?camp=${datacamp}`);
-      } else {
-        // console.log(res.data.id);
-
-        const resData = await fetch(`${process.env.URL_API}/anak`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            name: values.name,
-            gender: values.gender,
-            dateofbirth: values.dateofbirth,
-            user_id: res.data.id,
-            // vaksin_id: 1,
-          }),
-        });
-
-        const resApiAnak = await resData.json();
-        if (resData.status != 200) {
-          message.error(resApiAnak.message);
-        } else {
-          message.success(`Success`);
-          props.actionProvider.handleAnakAfterSubmit(
-            values.name,
-            values.gender,
-            values.dateofbirth
-          );
-          getBulanUsiaVaksin(values.dateofbirth);
-        }
-        // message.success(`Success`);
-        // var phone = t("phone_code") + values.phone;
-      }
-    }
-  };
-
   return (
     <>
       <div className="options">
@@ -109,7 +34,80 @@ const Data_anak = (props) => {
             <Formik
               initialValues={{ name: "", dateofbirth: "", gender: "" }}
               validationSchema={RegisterSchema}
-              onSubmit={onSubmitForm}
+              onSubmit={async (values) => {
+                var dt = {
+                  name: values.name,
+                  gender: values.gender,
+                  dateofbirth: values.dateofbirth,
+                };
+
+                // console.log(dt);
+                console.log(context.setAnak(dt));
+                //  Ortu
+                if (context.state.NamaOrtu == "") {
+                  message.error(`Data error, please re-enter data`);
+                } else {
+                  // var dt = {
+                  //   fullname: context.state.NamaOrtu,
+                  // };
+                  // context.state.NamaOrtu(dt);
+
+                  // setLoading(true);
+
+                  const resData = await fetch(`${process.env.URL_API}/user`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      // "Access-Control-Allow-Origin": "*",
+                    },
+                    body: JSON.stringify({
+                      fullname: context.state.NamaOrtu,
+                      // phone: phone,
+                      // local: locals,
+                      // dateofbirth: values.dateofbirth,
+                      // camp: datacamp,
+                    }),
+                  });
+
+                  const res = await resData.json();
+                  if (resData.status != 200) {
+                    message.error(res.message);
+                    // router.push(`${context.state.urls}/one?camp=${datacamp}`);
+                  } else {
+                    // console.log(res.data.id);
+
+                    const resData = await fetch(`${process.env.URL_API}/anak`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        // "Access-Control-Allow-Origin": "*",
+                      },
+                      body: JSON.stringify({
+                        name: values.name,
+                        gender: values.gender,
+                        dateofbirth: values.dateofbirth,
+                        user_id: res.data.id,
+                        // vaksin_id: 1,
+                      }),
+                    });
+
+                    const resApiAnak = await resData.json();
+                    if (resData.status != 200) {
+                      message.error(resApiAnak.message);
+                    } else {
+                      message.success(`Success`);
+                      props.actionProvider.handleAnakAfterSubmit(
+                        values.name,
+                        values.gender,
+                        values.dateofbirth
+                      );
+                      getBulanUsiaVaksin(values.dateofbirth);
+                    }
+                    // message.success(`Success`);
+                    // var phone = t("phone_code") + values.phone;
+                  }
+                }
+              }}
             >
               {({ errors, touched, setFieldValue }) => (
                 <Form>
@@ -153,6 +151,9 @@ const Data_anak = (props) => {
                         placeholder="Jenis Kelamin Anak"
                         className={`py-2 px-3 text-lg bg-white border border-secondary-500 overflow-hidden focus:outline-none focus:border-secondary-500 focus:ring-secondary-700 focus:ring-1 w-full`}
                       >
+                        <option label="Jenis Kelamin" hidden>
+                          Jenis Kelamin
+                        </option>
                         <option className="" value="male">
                           Laki - Laki
                         </option>
