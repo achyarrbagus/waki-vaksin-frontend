@@ -72,13 +72,13 @@ export default function Dashboard() {
           <p className="text-lg sm:text-md font-normal mt-3">{t("header-3")}</p>
         </div>
         {/* header menu */}
-        <Link href="/chat">
+        {/* <Link href="/chat">
           <a className="h-full flex-1 text-center">
             <div className="bg-secondary-500 rounded-full shadow-lg px-4 py-3 mx-6 mb-5 mt-5">
               <p className="text-white font-bold text-lg">{t("btn-header-1")}</p>
             </div>
           </a>
-        </Link>
+        </Link> */}
         <Link href="/">
           <a className="h-full flex-1 text-center">
             <div className="bg-white rounded-full shadow-lg px-4 py-3 mx-6 mb-5 mt-2">
