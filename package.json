@@ -1,5 +1,5 @@
 {
-  "name": "Vaksin_Sehatcepat",
+  "name": "vaksin_sehatcepat",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -50,5 +50,17 @@
     "eslint-config-next": "12.0.7",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.7"
-  }
+  },
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "next-i18next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/hardid/waki_vaksin_sehatcepat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/hardid/waki_vaksin_sehatcepat/issues"
+  },
+  "homepage": "https://gitlab.com/hardid/waki_vaksin_sehatcepat#readme"
 }
