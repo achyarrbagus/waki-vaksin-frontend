@@ -165,6 +165,7 @@ export default function Pofile() {
       return "Perempuan";
     }
   };
+  console.log("hello world")
 
   const detailAge = (dob) => {
     let month = String(dob).split("-")[1];
