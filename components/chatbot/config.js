@@ -32,7 +32,7 @@ const config = {
       `Saya Vaksini siap membantu Anda untuk cek status vaksin anak Anda.`,
       {
         delay: 200,
-      }
+      },
     ),
     createChatBotMessage("Sebelumnya, Vaksini berbicara dengan siapa?", {
       withAvatar: false,

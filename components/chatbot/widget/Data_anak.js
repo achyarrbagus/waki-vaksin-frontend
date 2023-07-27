@@ -99,7 +99,7 @@ const Data_anak = (props) => {
                       props.actionProvider.handleAnakAfterSubmit(
                         values.name,
                         values.gender,
-                        values.dateofbirth
+                        values.dateofbirth,
                       );
                       getBulanUsiaVaksin(values.dateofbirth);
                     }

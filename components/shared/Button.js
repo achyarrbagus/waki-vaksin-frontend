@@ -8,5 +8,5 @@ export default function ButtonComp({ caption }) {
         {caption}
       </button>
     </div>
-  )
+  );
 }

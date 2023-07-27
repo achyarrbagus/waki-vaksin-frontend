@@ -15,6 +15,9 @@ import { useTranslation } from "next-i18next";
 import { ThemeProvider } from "@material-tailwind/react";
 import { vaksin } from "@/constant/vaksin";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 // const AppContext = createContext();
 function MyApp({ Component, pageProps }) {
   const { i18n } = useTranslation();
@@ -80,33 +83,36 @@ function MyApp({ Component, pageProps }) {
   const [phone, setPhone] = useState();
   const [tanggalLahir, setTanggalLahir] = useState("");
   const [jenisKelamin, setJenisKelamin] = useState("");
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <ThemeProvider value={customTheme}>
-      <AppContext.Provider
-        value={{
-          state: {
-            NamaOrtu: NamaOrtu,
-            addr: addr,
-            slugs: slugs,
-            email: email,
-            anak: anak,
-            usia: usia,
-            vaksin: vaksin,
-            phone,
-          },
-          setNamaOrtu: setNamaOrtu,
-          setAddr: setAddr,
-          setSlugs: setSlugs,
-          setEmail: setEmail,
-          setAnak: setAnak,
-          setUsia: setUsia,
-          setVaksin: setVaksin,
-          setPhone,
-        }}
-      >
-        <Component {...pageProps} />
-      </AppContext.Provider>
+      <QueryClientProvider client={queryClient}>
+        <AppContext.Provider
+          value={{
+            state: {
+              NamaOrtu: NamaOrtu,
+              addr: addr,
+              slugs: slugs,
+              email: email,
+              anak: anak,
+              usia: usia,
+              vaksin: vaksin,
+              phone,
+            },
+            setNamaOrtu: setNamaOrtu,
+            setAddr: setAddr,
+            setSlugs: setSlugs,
+            setEmail: setEmail,
+            setAnak: setAnak,
+            setUsia: setUsia,
+            setVaksin: setVaksin,
+            setPhone,
+          }}
+        >
+          <Component {...pageProps} />
+        </AppContext.Provider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

@@ -9,7 +9,7 @@ class ActionProvider {
     createClientMessage,
     state,
     moment,
-    context
+    context,
   ) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
@@ -62,7 +62,7 @@ class ActionProvider {
 
   handleAyah = (props) => {
     var els = document.querySelector(
-      'input[class="react-chatbot-kit-chat-input"]'
+      'input[class="react-chatbot-kit-chat-input"]',
     );
     els.focus();
     els.value = "ayah: ";
@@ -70,7 +70,7 @@ class ActionProvider {
 
   handleBunda = () => {
     var els = document.querySelector(
-      'input[class="react-chatbot-kit-chat-input"]'
+      'input[class="react-chatbot-kit-chat-input"]',
     );
     els.focus();
     els.value = "bunda: ";
@@ -83,7 +83,7 @@ class ActionProvider {
       `Apakah ${props} sudah pernah cek status vaksin anak Anda di Cepat Sehat?`,
       {
         widget: "StatusVaksin",
-      }
+      },
     );
     this.addMessageToState(message);
     let wordInput = props.split(": ");
@@ -102,7 +102,7 @@ class ActionProvider {
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message2);
   };
@@ -117,7 +117,7 @@ class ActionProvider {
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message2);
   };
@@ -146,18 +146,18 @@ class ActionProvider {
     this.addMessageToState(message3);
 
     const message4 = this.createChatBotMessage(
-      `an. ${name} berusia ${this.getUmur(dateofbirth)};`
+      `an. ${name} berusia ${this.getUmur(dateofbirth)};`,
     );
     const message5 = this.createChatBotMessage(
       `Berikut adalah daftar vaksin anak sampai usia ${this.getUmur(
-        dateofbirth
+        dateofbirth,
       )}. Silahkan pilih vaksinasi yang An. ${name} telah ikuti.`,
       {
         widget: "GetVaksinAnak",
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message4);
     this.addMessageToState(message5);
@@ -197,7 +197,7 @@ class ActionProvider {
     const message = this.createClientMessage(
       `Vaksin yang sudah yaitu ${vaksin.map((data) => {
         return data;
-      })}`
+      })}`,
     );
     this.addMessageToState(message);
   };
@@ -206,7 +206,7 @@ class ActionProvider {
     this.setState((state) => ({ ...state, NamaOrtu: props }));
     // console.log(this.state);
     const message = this.createChatBotMessage(
-      `An. ${this.state.name} belum melakukan ${jumlahBelumvaksin} vaksin.`
+      `An. ${this.state.name} belum melakukan ${jumlahBelumvaksin} vaksin.`,
     );
     this.addMessageToState(message);
     const message2 = this.createChatBotMessage(
@@ -216,7 +216,7 @@ class ActionProvider {
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message2);
   };
@@ -229,7 +229,7 @@ class ActionProvider {
 
   handleInputNoHP = () => {
     var els = document.querySelector(
-      'input[class="react-chatbot-kit-chat-input"]'
+      'input[class="react-chatbot-kit-chat-input"]',
     );
     els.focus();
     // els.setAttribute("type", "number");
@@ -245,11 +245,11 @@ class ActionProvider {
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message2);
     const message3 = this.createChatBotMessage(
-      `Terima kasih ${this.state.NamaOrtu} telah cek status vaksin anak di Cepat Sehat!`
+      `Terima kasih ${this.state.NamaOrtu} telah cek status vaksin anak di Cepat Sehat!`,
     );
     this.addMessageToState(message3);
   };
@@ -263,7 +263,7 @@ class ActionProvider {
       },
       {
         delay: 300,
-      }
+      },
     );
     this.addMessageToState(message2);
   };

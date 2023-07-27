@@ -1,28 +1,32 @@
-import { useRouter } from 'next/router'
-import { Fragment, useState } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { flags } from '../../constant/flag'
-import { switchFlag } from '../../helpers/flag'
+import { useRouter } from "next/router";
+import { Fragment, useState } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { flags } from "../../constant/flag";
+import { switchFlag } from "../../helpers/flag";
 import Image from "next/image";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Flag() {
+  const router = useRouter();
+  const { pathname, query, asPath } = router;
 
-  const router = useRouter()
-  const { pathname, query, asPath } = router
-
-  const [selected, setSelected] = useState(router.locale)
+  const [selected, setSelected] = useState(router.locale);
 
   const handleChange = (e) => {
-    setSelected(e.name)
-    router.push({ pathname, query }, asPath, { locale: e.name })
-  }
+    setSelected(e.name);
+    router.push({ pathname, query }, asPath, { locale: e.name });
+  };
 
   return (
-    <Listbox value={selected} onChange={(e) => { handleChange(e) }}>
+    <Listbox
+      value={selected}
+      onChange={(e) => {
+        handleChange(e);
+      }}
+    >
       {({ open }) => (
         <>
           <div className="mt-1 relative">
@@ -51,8 +55,10 @@ export default function Flag() {
                     key={flag.id}
                     className={({ active }) =>
                       classNames(
-                        active ? 'text-white bg-secondary-500' : 'text-gray-900',
-                        'cursor-default select-none relative py-2 pl-1 pr-1'
+                        active
+                          ? "text-white bg-secondary-500"
+                          : "text-gray-900",
+                        "cursor-default select-none relative py-2 pl-1 pr-1",
                       )
                     }
                     value={flag}
@@ -69,19 +75,20 @@ export default function Flag() {
                             />
                           </div>
                           <span
-                            className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
-                          >
-                          </span>
+                            className={classNames(
+                              selected ? "font-semibold" : "font-normal",
+                              "ml-3 block truncate",
+                            )}
+                          ></span>
                         </div>
 
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 'text-secondary-600',
-                              'absolute inset-y-0 right-0 flex items-center pr-4'
+                              active ? "text-white" : "text-secondary-600",
+                              "absolute inset-y-0 right-0 flex items-center pr-4",
                             )}
-                          >
-                          </span>
+                          ></span>
                         ) : null}
                       </>
                     )}
@@ -93,5 +100,5 @@ export default function Flag() {
         </>
       )}
     </Listbox>
-  )
+  );
 }

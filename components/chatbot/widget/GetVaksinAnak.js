@@ -63,7 +63,7 @@ const GetVaksinAnak = (props) => {
           // console.log(data);
           await props?.actionProvider.handlePilihSisaVaksin(values.checked);
           await props?.actionProvider.handleAnakAfterPilihVaksin(
-            jumlahBelumVaksin
+            jumlahBelumVaksin,
           );
         }}
       >

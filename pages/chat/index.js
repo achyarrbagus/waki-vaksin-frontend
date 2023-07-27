@@ -8,10 +8,17 @@ import Script from "next/script";
 const index = () => {
   return (
     <>
-      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+      ></meta>
       <Layout title="Chat vaksini" back="/">
         <div className="bg-white">
-          <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
+          <Chatbot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+          />
         </div>
       </Layout>
     </>
@@ -19,5 +26,3 @@ const index = () => {
 };
 
 export default index;
-
-

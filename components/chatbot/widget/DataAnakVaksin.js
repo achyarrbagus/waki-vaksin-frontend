@@ -85,7 +85,7 @@ const DataAnakVaksin = (props) => {
           props.actionProvider.handleAnakAfterSubmit(
             values.name,
             values.gender,
-            values.dateofbirth
+            values.dateofbirth,
           );
         }
         // message.success(`Success`);
