@@ -446,7 +446,7 @@ export default function Pofile() {
           <div className="py-2.5 text-center">
             <Spin />
           </div>
-        ) : ( */}
+        ) : ( */}c
             <Link href={"/daftar_vaksin"}>
               <button
                 type="submit"
