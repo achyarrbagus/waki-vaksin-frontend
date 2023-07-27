@@ -19,7 +19,7 @@ const BotikaChatWidget = () => {
         },
       });
     }
-  }, []);
+  }, [window]);
 
   return <></>; // Return an empty fragment as the component doesn't render any visible content.
 };

@@ -33,13 +33,13 @@ export default function Pofile() {
   const query = id || en || ph || pk;
   const [isVaksin, setIsVaksin] = useState();
   const [vaksin, setVaksin] = useState([]);
-  const [statusVaksin,setStatusVaksin]=useState("")
+  const [statusVaksin, setStatusVaksin] = useState("");
 
   useEffect(() => {
     // onInit();
     fetchUser(query);
     fetchVaksin();
-    handleSwipVaksin(kids?.vaksin, "Sudah", vaksin)
+    handleSwipVaksin(kids?.vaksin, "Sudah", vaksin);
   }, []);
 
   const onInit = async () => {
@@ -70,9 +70,7 @@ export default function Pofile() {
   const fetchUser = async (qy) => {
     try {
       if (qy) {
-        const resp = await axios.get(
-          `http://localhost:5000/api/v1/unique-user/${query}`,
-        );
+        const resp = await axios.get(`http://localhost:5000/api/v1/unique-user/${query}`);
         const respJson = resp.data;
         setData(respJson.data);
         setKids(respJson.data.anak.slice(-1)[0]);
@@ -148,24 +146,13 @@ export default function Pofile() {
   };
 
   const sex = (gender) => {
-    if (
-      gender === "Laki laki" ||
-      gender === "Male" ||
-      gender === "male" ||
-      gender === "laki laki" ||
-      gender === "pria"
-    ) {
+    if (gender === "Laki laki" || gender === "Male" || gender === "male" || gender === "laki laki" || gender === "pria") {
       return "Laki laki";
-    } else if (
-      gender === "perempuan" ||
-      gender === "Female" ||
-      gender === "perempuan" ||
-      gender === "female"
-    ) {
+    } else if (gender === "perempuan" || gender === "Female" || gender === "perempuan" || gender === "female") {
       return "Perempuan";
     }
   };
-  console.log("hello world")
+  console.log(data);
 
   const detailAge = (dob) => {
     let month = String(dob).split("-")[1];
@@ -181,11 +168,8 @@ export default function Pofile() {
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
     const millisecondsPerMonth = millisecondsPerDay * 30.436875; // Approximate average days per month
 
-    const ageYears = Math.floor(
-      Math.abs(diffInMilliseconds) / (millisecondsPerDay * 365),
-    );
-    const ageMonths =
-      Math.floor(diffInMilliseconds / millisecondsPerMonth) % 12;
+    const ageYears = Math.floor(Math.abs(diffInMilliseconds) / (millisecondsPerDay * 365));
+    const ageMonths = Math.floor(diffInMilliseconds / millisecondsPerMonth) % 12;
     const ageDays = Math.floor(diffInMilliseconds / millisecondsPerDay) % 30;
 
     return `${ageDays} hari ${ageMonths} bulan ${ageYears} tahun`;
@@ -194,18 +178,16 @@ export default function Pofile() {
   const handleSwipVaksin = (vaksinAnak, isVaccin, vaksins) => {
     if (isVaccin === "Sudah") {
       setIsVaksin(vaksinAnak);
-      setStatusVaksin("sudah")
+      setStatusVaksin("sudah");
       return "sudah";
     } else if (isVaccin === "Belum") {
-      let resp = vaksins.filter(
-        (element) => !vaksinAnak?.some((obj) => obj.id === element.id),
-      );
+      let resp = vaksins.filter((element) => !vaksinAnak?.some((obj) => obj.id === element.id));
       setIsVaksin(resp);
-      setStatusVaksin("belum")
+      setStatusVaksin("belum");
       return "belum";
     } else {
       setIsVaksin(vaksins);
-      setStatusVaksin("")
+      setStatusVaksin("");
       return "semua";
     }
   };
@@ -215,22 +197,22 @@ export default function Pofile() {
     for (const key in data) {
       const item = data[key];
       const { age } = item;
-  
+
       if (!groupedByAge[age]) {
         groupedByAge[age] = [];
       }
-  
+
       groupedByAge[age].push(item);
     }
-  
+
     // Mengembalikan array yang berisi semua nilai (array) dari objek groupedByAge
     return Object.values(groupedByAge);
   }
 
   const HistoryVaksin = ({ data }) => {
     const groupedData = groupDataByAge(data);
-    
-    groupedData.map((item)=>console.log(item))
+
+    groupedData.map((item) => console.log(item));
     return (
       <>
         {groupedData.map((item, index) => (
@@ -240,25 +222,24 @@ export default function Pofile() {
           >
             <div className="mx-4 my-2 font-bold">{item[0]?.age}</div>
             <div className="flex flex-col mx-4">
-              {item.map((item2,index2)=>(
-              <div key={item2.namevaksin} className="px-6 my-2 text-secondary-500 font-bold">
-              {item2?.namevaksin}
-              </div>
+              {item.map((item2, index2) => (
+                <div key={item2.namevaksin} className="px-6 my-2 text-secondary-500 font-bold">
+                  {item2?.namevaksin}
+                </div>
               ))}
             </div>
             <div className="flex flex-col mx-4">
-              {item.map((item,index)=>(
-              <div key={index} className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
-                {statusVaksin}
-              </div>
+              {item.map((item, index) => (
+                <div key={index} className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+                  {statusVaksin}
+                </div>
               ))}
-               
             </div>
           </div>
         ))}
       </>
     );
-  };  
+  };
 
   return (
     <>
@@ -275,13 +256,8 @@ export default function Pofile() {
                       <SwiperSlide key={item.id} style={{ width: "50%" }}>
                         <div key={index} onClick={() => handleSwip(item)}>
                           <a className="h-full text-center -top-6">
-                            <div
-                              key={item.name}
-                              className="bg-secondary-500 rounded-full px-4 py-2 mb-5"
-                            >
-                              <p className="text-white font-bold text-lg">
-                                {item.name}
-                              </p>
+                            <div key={item.name} className="bg-secondary-500 rounded-full px-4 py-2 mb-5">
+                              <p className="text-white font-bold text-lg">{item.name}</p>
                             </div>
                           </a>
                         </div>
@@ -325,9 +301,7 @@ export default function Pofile() {
                   </div>
                 </div>
                 <div className="ml-4 content-center">
-                  <h3 className="text-gray-700 font-bold text-2xl">
-                    {kids?.name}
-                  </h3>
+                  <h3 className="text-gray-700 font-bold text-2xl">{kids?.name}</h3>
                   <p className="text-gray-400 font-light text-lg mt-1">
                     {sex(kids?.gender)} | {detailAge(kids?.dateofbirth)}
                   </p>
@@ -366,23 +340,14 @@ export default function Pofile() {
           </div>
 
           <div className="mt-4 mx-6">
-            <Tabs
-              defaultActiveKey="1"
-              size={"large"}
-              tabBarStyle={{ width: "100%", color: "#A7A7A7" }}
-            >
+            <Tabs defaultActiveKey="1" size={"large"} tabBarStyle={{ width: "100%", color: "#A7A7A7" }}>
               <Tabs.TabPane tab="Vaksin" key="1">
                 <div className="flex flex-col">
                   <div className="flex flex-row">
                     <Link href="#">
                       <a className="h-full text-center -top-6">
                         <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                          <p
-                            onClick={() =>
-                              handleSwipVaksin(kids?.vaksin, "Belum", vaksin)
-                            }
-                            className="text-lg font-bold"
-                          >
+                          <p onClick={() => handleSwipVaksin(kids?.vaksin, "Belum", vaksin)} className="text-lg font-bold">
                             Belum
                           </p>
                         </div>
@@ -391,12 +356,7 @@ export default function Pofile() {
                     <Link href="">
                       <a className="h-full text-center -top-6">
                         <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                          <p
-                            onClick={() =>
-                              handleSwipVaksin(kids?.vaksin, "Sudah", vaksin)
-                            }
-                            className="text-lg font-bold"
-                          >
+                          <p onClick={() => handleSwipVaksin(kids?.vaksin, "Sudah", vaksin)} className="text-lg font-bold">
                             Sudah
                           </p>
                         </div>
@@ -405,12 +365,7 @@ export default function Pofile() {
                     <Link href="">
                       <a className="h-full text-center -top-6">
                         <div className="text-grey-800 rounded-full border-2 border-theme cursor-pointer px-4 py-3 m-2 hover:bg-secondary-500 hover:text-gray-100">
-                          <p
-                            onClick={() =>
-                              handleSwipVaksin(kids?.vaksin, "Semua", vaksin)
-                            }
-                            className="text-lg font-bold"
-                          >
+                          <p onClick={() => handleSwipVaksin(kids?.vaksin, "Semua", vaksin)} className="text-lg font-bold">
                             Semua
                           </p>
                         </div>
@@ -418,18 +373,14 @@ export default function Pofile() {
                     </Link>
                   </div>
                   <div className="flex flex-col">
-                    <p className="text-2xl font-bold mb-2">
-                      Riwayat Vaksin Anak
-                    </p>
+                    <p className="text-2xl font-bold mb-2">Riwayat Vaksin Anak</p>
                     <HistoryVaksin data={isVaksin} />
                   </div>
                 </div>
               </Tabs.TabPane>
               <Tabs.TabPane tab="Pertumbuhan" key="2">
                 <div className="flex flex-col">
-                  <p className="text-2xl font-bold">
-                    Tabel Tumbuh Kembang Anak
-                  </p>
+                  <p className="text-2xl font-bold">Tabel Tumbuh Kembang Anak</p>
                   <Table
                     columns={columns}
                     dataSource={dataSource}
@@ -486,8 +437,7 @@ export default function Pofile() {
         >
           <div className="flex flex-col my-2">
             <p className="text-xl font-bold">
-              Data Tumbuh Kembang Anak{" "}
-              <p className="text-secondary-500">0 Bulan</p>
+              Data Tumbuh Kembang Anak <p className="text-secondary-500">0 Bulan</p>
             </p>
           </div>
           <div className="flex flex-row cursor-pointer justify-content-center border-solid border-2 border-theme rounded-md my-4">
@@ -517,9 +467,7 @@ export default function Pofile() {
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="text-lg font-bold">
-              Apakah data yang Anda masukkan sudah benar?
-            </p>
+            <p className="text-lg font-bold">Apakah data yang Anda masukkan sudah benar?</p>
           </div>
         </Modal>
         <Footer />
