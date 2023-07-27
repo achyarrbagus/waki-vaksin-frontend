@@ -40,7 +40,7 @@ export default function Pofile() {
     fetchUser(query);
     fetchVaksin();
     handleSwipVaksin(kids?.vaksin, "Sudah", vaksin)
-  }, [query]);
+  }, []);
 
   const onInit = async () => {
     Promise.all([fetchArticles()])
@@ -248,7 +248,7 @@ export default function Pofile() {
             </div>
             <div className="flex flex-col mx-4">
               {item.map((item,index)=>(
-              <div className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
+              <div key={index} className="text-warning-500 bg-warning-100 px-6 my-2 rounded-full font-bold">
                 {statusVaksin}
               </div>
               ))}
@@ -446,7 +446,7 @@ export default function Pofile() {
           <div className="py-2.5 text-center">
             <Spin />
           </div>
-        ) : ( */}c
+        ) : ( */}
             <Link href={"/daftar_vaksin"}>
               <button
                 type="submit"
