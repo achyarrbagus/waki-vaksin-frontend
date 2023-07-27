@@ -14,6 +14,7 @@ import { switchGTM2 } from "/helpers/gtm2";
 import { useTranslation } from "next-i18next";
 import { ThemeProvider } from "@material-tailwind/react";
 import { vaksin } from "@/constant/vaksin";
+// import {Script} from
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";

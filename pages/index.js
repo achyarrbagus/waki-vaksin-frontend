@@ -24,8 +24,12 @@ export default function Dashboard() {
   const [doctors, setDoctors] = useState(null);
 
   useEffect(() => {
-    onInit();
+    // onInit();
   }, [i18n.language]);
+
+
+
+
 
   const onInit = async () => {
     Promise.all([fetchArticles(), fetchDoctors()])
@@ -63,11 +67,11 @@ export default function Dashboard() {
   const BotikaChatInitializer = () => {
     useEffect(() => {
       // Initialize BotikaChat when the component mounts on the client-side
-      if (typeof window !== "undefined" && window.BotikaChat) {
-        window.BotikaChat.init({
-          client: "Fg9RsCv",
-        });
-      }
+      // if (typeof window !== "undefined" && window.BotikaChat) {
+      //   window.BotikaChat.init({
+      //     client: "Fg9RsCv",
+      //   });
+      // }
     }, []);
 
     return null; // We don't need to render anything for this component
@@ -75,6 +79,7 @@ export default function Dashboard() {
 
   return (
     <Layout title="Home">
+      <Script src="https://chat.botika.online/client/assets/js/botika.widget.js"></Script>
       <div className="bg-primary-700 pb-4 flex-col">
         {/* header text */}
         <div className="text-left text-white px-6 py-3">
@@ -119,16 +124,9 @@ export default function Dashboard() {
           )}
         </div>
       </div>
-      {/* ddialog flow messenger embededd */}
       <div className="bg-black">
-        {/* <Script src="https://chat.botika.online/client/assets/js/botika.widget.js"></Script>
-        <BotikaChatInitializer /> */}
-
         {/* <!--- botika webchat begin --> */}
-        <Script
-          id="vaksini"
-          src="https://chat.botika.online/client/assets/js/botika.widget.js"
-        ></Script>
+        <Script src="https://chat.botika.online/client/assets/js/botika.widget.js"></Script>
         <BotikaChatWidget />
       </div>
       <div className="bg-white flex flex-col px-6 pt-6">
